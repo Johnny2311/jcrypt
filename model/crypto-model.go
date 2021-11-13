@@ -13,8 +13,12 @@ type CryptoResponse []struct {
 func (c CryptoResponse) TextOutput() string {
 	t := ""
 	for _, crypto := range c {
-		t += fmt.Sprintf("\nName: %s\nPrice: %s\nRank: %s\nHigh: %s\nCirculation Supply: %s\n",
-			crypto.Name, crypto.Price, crypto.Rank, crypto.High, crypto.CirculatingSupply)
+		t += "\n"
+		t += fmt.Sprintf("Name: %s\n", crypto.Name)
+		t += fmt.Sprintf("Price: %s\n", crypto.Price)
+		t += fmt.Sprintf("Rank: %s\n", crypto.Rank)
+		t += fmt.Sprintf("High: %s\n", crypto.High)
+		t += fmt.Sprintf("Circulation Supply: %s\n", crypto.CirculatingSupply)
 	}
 	if t == "" {
 		return  "There is something wrong, maybe a typo in the names of the currencies"
