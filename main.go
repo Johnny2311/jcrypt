@@ -20,7 +20,7 @@ func main() {
 		&target, "conv", "USD", "Input the name of the currency you would like to convert the crypto",
 	)
 	flag.Float64Var(
-		&amount, "calc", 1.0, "Input the amount of the crypto to be converted",
+		&amount, "calc", 0, "Input the amount of the crypto to be converted",
 	)
 
 	flag.Parse()
@@ -28,7 +28,7 @@ func main() {
 	target = strings.ToUpper(target)
 	origin = strings.ToUpper(origin)
 
-	info, err := client.FetchCrypto(origin, target)
+	info, err := client.FetchCrypto(origin, target, amount)
 	if err != nil {
 		log.Println(err)
 	}
