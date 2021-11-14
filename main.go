@@ -9,22 +9,26 @@ import (
 )
 
 func main() {
-	var fiat, crypto string
+	var origin, target string
+	var amount float64
 
 	// bind flags to variables
 	flag.StringVar(
-		&fiat, "fiat", "USD", "The name of the fiat currency you would like to know the price of your crypto in",
+		&origin, "p", "BTC", "Input the name of the crypto you would like to know the price of",
 	)
 	flag.StringVar(
-		&crypto, "crypto", "BTC", "Input the name of the CryptoCurrency you would like to know the price of",
+		&target, "conv", "USD", "Input the name of the currency you would like to convert the crypto",
+	)
+	flag.Float64Var(
+		&amount, "calc", 1.0, "Input the amount of the crypto to be converted",
 	)
 
 	flag.Parse()
 
-	fiat = strings.ToUpper(fiat)
-	crypto = strings.ToUpper(crypto)
+	target = strings.ToUpper(target)
+	origin = strings.ToUpper(origin)
 
-	info, err := client.FetchCrypto(fiat, crypto)
+	info, err := client.FetchCrypto(origin, target)
 	if err != nil {
 		log.Println(err)
 	}

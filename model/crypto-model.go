@@ -10,12 +10,12 @@ type CryptoResponse []struct {
 	CirculatingSupply string `json:"circulating_supply"`
 }
 
-func (c CryptoResponse) TextOutput() string {
+func (c CryptoResponse) TextOutput(target string) string {
 	t := ""
 	for _, crypto := range c {
 		t += "\n"
 		t += fmt.Sprintf("Name: %s\n", crypto.Name)
-		t += fmt.Sprintf("Price: %s\n", crypto.Price)
+		t += fmt.Sprintf("Price: %s %s\n", crypto.Price, target)
 		t += fmt.Sprintf("Rank: %s\n", crypto.Rank)
 		t += fmt.Sprintf("High: %s\n", crypto.High)
 		t += fmt.Sprintf("Circulation Supply: %s\n", crypto.CirculatingSupply)
